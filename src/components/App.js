@@ -1,10 +1,10 @@
 import React from 'react';
-
+import NavBar from './Appbar';
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        
+        <NavBar></NavBar>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
