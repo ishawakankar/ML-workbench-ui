@@ -14,30 +14,34 @@ import { Grid } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    padding: theme.spacing(3, 2),
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 180,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-  margin: {
-    margin: theme.spacing(2),
-  },
-  extendedIcon: {
-    marginRight: theme.spacing(1),
-  },
-}));
+import '../css/SelectApp.css'
+
+// const useStyles = makeStyles(theme => ({
+//   root: {
+//     padding: theme.spacing(3, 2),
+//     display: 'flex',
+//     flexWrap: 'wrap',
+//   },
+//   text: {
+//     textAlign: 'center'
+//   },
+//   formControl: {
+//     margin: theme.spacing(1),
+//     minWidth: 180,
+//   },
+//   selectEmpty: {
+//     marginTop: theme.spacing(2),
+//   },
+//   margin: {
+//     margin: theme.spacing(2),
+//   },
+//   extendedIcon: {
+//     marginRight: theme.spacing(1),
+//   },
+// }));
 
 export default function SelectApp() {
-  const classes = useStyles();
-
+  
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
   React.useEffect(() => {
@@ -55,15 +59,15 @@ export default function SelectApp() {
 
   return (
     <div>
-      <Paper className={classes.root}>
+      <Paper className="root">
       <Grid container spacing={3} alignItems="center" justify="center">
         <Grid item xs={12} >
-            <Typography variant="h5" component="h3">
+            <Typography variant="h5" component="h3" className="text">
             Select an Application
             </Typography>
         </Grid>
 
-        <FormControl variant="outlined" className={classes.formControl}>
+        <FormControl variant="outlined" className="formControl">
             <InputLabel ref={inputLabel} htmlFor="outlined-age-simple">
             Select an App
             </InputLabel>
@@ -84,7 +88,7 @@ export default function SelectApp() {
             size="medium"
             color="primary"
             aria-label="add"
-            className={classes.margin}
+            className="margin"
             >
             Run
             </Fab>

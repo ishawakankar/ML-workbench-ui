@@ -1,0 +1,24 @@
+.root {
+    /* padding: theme.spacing(3, 2), */
+    display: flex;
+    flex-wrap: wrap;
+  }
+.text {
+    text-align: center
+  }
+.formControl {
+    margin: 100%;
+    min-width: 180;
+  }
+  .button1 {
+    margin-top: 2%;
+}
+/* .selectEmpty {
+    marginTop: theme.spacing(2),
+  }
+.margin {
+    margin: theme.spacing(2),
+  }
+.extendedIcon {
+    marginRight: theme.spacing(1),
+  } */
