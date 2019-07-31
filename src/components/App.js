@@ -1,17 +1,12 @@
 import React from 'react';
 import NavBar from './Appbar';
+import SelectApp from './SelectApp';
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <NavBar></NavBar>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        ></a>
-      </header>
+        <NavBar /> 
+        <SelectApp />
     </div>
   );
 }
