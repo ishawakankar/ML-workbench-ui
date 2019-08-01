@@ -112,25 +112,25 @@ class SelectApp extends React.Component {
         return(
             <div>
               <Paper className={classes.root} id="images">
-              <Grid container spacing={3} alignItems="center" justify="center">
-                <Grid item xs={12}>
-                  <Typography variant="h5" component="h3" className={classes.textControl} style={{color: '#ffffff'}}>
-                    Select An Application
-                  </Typography>
-                </Grid>
+                <Grid container spacing={3} alignItems="center" justify="center">
+                  <Grid item xs={12}>
+                    <Typography variant="h5" component="h3" className={classes.textControl} style={{color: '#ffffff'}}>
+                      Select An Application
+                    </Typography>
+                  </Grid>
 
-                <FormControl variant="filled" className="formControl">
-                  <InputLabel htmlFor="filled-age-simple" className="inputControl">Select An App</InputLabel>
-                  <Select
-                    input={<FilledInput name="age" id="filled-age-simple" />}
-                    onChange={this.handleChange}
-                    value={this.state.applicaton}
-                  >
-                    <MenuItem value={'Iris Classification'}>Iris Classification</MenuItem>
-                    <MenuItem value={'House Price Estimation'}>House Price Estimation</MenuItem>
-                    <MenuItem value={'Profanity Check App'}>Profanity Check App</MenuItem>
-                  </Select>
-                </FormControl>
+                  <FormControl variant="filled" className="formControl">
+                    <InputLabel htmlFor="filled-age-simple" className="inputControl">Select An App</InputLabel>
+                    <Select
+                      input={<FilledInput name="age" id="filled-age-simple" />}
+                      onChange={this.handleChange}
+                      value={this.state.applicaton}
+                    >
+                      <MenuItem value={'Iris Classification'}>Iris Classification</MenuItem>
+                      <MenuItem value={'House Price Estimation'}>House Price Estimation</MenuItem>
+                      <MenuItem value={'Profanity Check App'}>Profanity Check App</MenuItem>
+                    </Select>
+                  </FormControl>
                
                     <Fab
                       variant="extended"
@@ -146,13 +146,13 @@ class SelectApp extends React.Component {
                   {(this.state.profanityInputShow)?
                     <Grid item xs={12} className="profanityInputGrid" >
                      <Paper className={classes.ProfanityRoot}>
-      
-      <InputBase
-        className={classes.input}
-        placeholder="Enter a sentence"
-        inputProps={{ 'aria-label': 'Enter a Sentence' }}
-      />
-    </Paper>
+                      <InputBase
+                        className={classes.input}
+                        placeholder="Enter a sentence"
+                        inputProps={{ 'aria-label': 'Enter a Sentence' }}
+                        onChange={this.handleProfanityInput}
+                      />
+                    </Paper>
                     {/* <TextField
                       id="standard-dense"
                       label="Check for Profanity"
