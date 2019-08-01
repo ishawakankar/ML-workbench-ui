@@ -30,6 +30,7 @@
 }
 
 .profanityInputGrid {
+    padding: 5vw !important;
     display: flex;
     align-items: center;
     justify-content: center;

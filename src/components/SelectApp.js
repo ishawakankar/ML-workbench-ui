@@ -1,23 +1,17 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import Input from '@material-ui/core/Input';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
 import FilledInput from '@material-ui/core/FilledInput';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputBase from '@material-ui/core/InputBase';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { Grid, withStyles } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
 import '../css/SelectApp.css'
-import Image from '../css/images/backgroundML.jpg'
-import { width } from '@material-ui/system';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 const styles = theme => ({
   root: {
@@ -53,6 +47,9 @@ class SelectApp extends React.Component {
           applicaton: '',
           profanityInput: '',
           profanityInputShow: false,
+          sentence: '',
+          sentence1: '',
+          highlight: 'hell',
         }
     }
 
@@ -101,7 +98,10 @@ class SelectApp extends React.Component {
           },
           body: JSON.stringify(request)
         }).then(response => response.json()).then((response) => {
-          console.log(response.result.profanity)
+          this.setState({
+            sentence: response.result.profanity[0].sentOfoccurance.split(this.state.highlight)[0],
+            sentence1: response.result.profanity[0].sentOfoccurance.split(this.state.highlight)[1],
+          })
         })
       }
     }
@@ -164,6 +164,20 @@ class SelectApp extends React.Component {
                   </Grid>:''}
                 </Grid>
               </Paper>
+
+              {(this.state.sentence=='')?'':
+              <Card style={{width: '50vw', margin: 20}}>
+                <CardContent>
+                  <Typography color="textSecondary" gutterBottom>
+                    {this.state.sentence}
+                    <span style={{color: '#FF0000'}}>
+                      {this.state.highlight}
+                    </span>
+                    {this.state.sentence1}
+                  </Typography>
+                </CardContent>
+              </Card>
+              }
             </div>
         )
     }
