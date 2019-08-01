@@ -14,10 +14,15 @@ import { Grid, withStyles } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
 import '../css/SelectApp.css'
+import Image from '../css/images/backgroundML.jpg'
+import { width } from '@material-ui/system';
 
 const styles = theme => ({
   root: {
     padding: theme.spacing(3, 2),
+    backgroundImage: `url(${Image})`,
+    width: '98vw',
+    height: '50vh'
   },
   extendedIcon: {
     marginRight: theme.spacing(1),
@@ -50,9 +55,9 @@ class SelectApp extends React.Component {
         <Select
           input={<FilledInput name="age" id="filled-age-simple" />}
         >
-         <MenuItem value={10}>Iris Classification</MenuItem>
-          <MenuItem value={20}>House Price Estimation</MenuItem>
-          <MenuItem value={30}>Profanity Check App</MenuItem>
+         <MenuItem value={"Iris Classification"}>Iris Classification</MenuItem>
+          <MenuItem value={"House Price Estimation"}>House Price Estimation</MenuItem>
+          <MenuItem value={"Profanity Check App"}>Profanity Check App</MenuItem>
         </Select>
       </FormControl>
                 {/* <FormControl variant="outlined" className="formControl">
