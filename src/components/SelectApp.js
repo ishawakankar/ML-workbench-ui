@@ -13,6 +13,7 @@ import Select from '@material-ui/core/Select';
 import { Grid } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
+import Divider from '@material-ui/core/Divider';
 import '../css/style.css'
 
 
@@ -26,7 +27,7 @@ class SelectApp extends React.Component {
         
         return(
             <div>
-                
+                <Divider />
             </div>
         )
     }
