@@ -23,14 +23,15 @@ export default function NavBar() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} >
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            ML-as-a-service
+          <Typography style={{fontSize: '1.7rem'}} className={classes.title}>
+            Daggit
           </Typography>
-          <Button color="inherit">Home</Button>
-          <Button color="inherit">Report</Button>
+          
+          <Typography style={{fontSize: '0.9rem'}}><Button href={`/`} style={{fontFamily: "Sans-serif", color: '#ffffff'}}>ML as a service</Button></Typography>
+          {/* <Button color="inherit">Home</Button> */}
 
         </Toolbar>
       </AppBar>
