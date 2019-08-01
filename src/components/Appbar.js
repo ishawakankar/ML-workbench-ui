@@ -31,7 +31,10 @@ export default function NavBar() {
             Daggit
           </Typography>
           
-          <Typography style={{fontSize: '0.9rem'}}><Button href={`/`} style={{fontFamily: "Sans-serif", color: '#ffffff'}}>ML as a service</Button></Typography>
+          <Typography style={{fontSize: '0.9rem'}}><Button href={`/`} style={{fontFamily: "Sans-serif", color: '#ffffff'}}>
+            ML as a service
+            </Button>
+            </Typography>
           {/* <Button color="inherit">Home</Button> */}
 
         </Toolbar>

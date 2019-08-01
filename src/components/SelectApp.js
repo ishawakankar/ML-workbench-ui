@@ -7,6 +7,7 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import FilledInput from '@material-ui/core/FilledInput';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
+import InputBase from '@material-ui/core/InputBase';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
@@ -15,14 +16,29 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
 import '../css/SelectApp.css'
+import Image from '../css/images/backgroundML.jpg'
+import { width } from '@material-ui/system';
 
 const styles = theme => ({
   root: {
     padding: theme.spacing(3, 2),
     marginTop: theme.spacing(3),
+    padding: '15vh'
+  },
+  profanityInput: {
+    padding: '2px 4px',
+    display: 'flex',
+    alignItems: 'center',
+    width: 400,
   },
   extendedIcon: {
     marginRight: theme.spacing(1),
+  },
+  input: {
+    marginLeft: 8,
+    flex: 1,
+    width: '40vw',
+    padding: '1vh'
   },
   textControl: {
     textAlign: 'center'
@@ -128,14 +144,23 @@ class SelectApp extends React.Component {
                     </Fab>
 
                   {(this.state.profanityInputShow)?
-                    <Grid item xs={12} >
-                    <TextField
+                    <Grid item xs={12} className="profanityInputGrid" >
+                     <Paper className={classes.ProfanityRoot}>
+      
+      <InputBase
+        className={classes.input}
+        placeholder="Enter a sentence"
+        inputProps={{ 'aria-label': 'Enter a Sentence' }}
+      />
+    </Paper>
+                    {/* <TextField
                       id="standard-dense"
                       label="Check for Profanity"
                       margin="dense"
                       onChange={this.handleProfanityInput}
                       style={{backgroundColor: '#ffffff', opacity: 0.7}}
-                    />
+                      fullWidth
+                    /> */}
                   </Grid>:''}
                 </Grid>
               </Paper>
