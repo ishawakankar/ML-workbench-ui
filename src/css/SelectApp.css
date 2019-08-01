@@ -13,6 +13,9 @@
   .button1 {
     margin-top: 2%;
 }
+.formControl {
+    width: 10vw !important
+}
 /* .selectEmpty {
     marginTop: theme.spacing(2),
   }

@@ -10,90 +10,77 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import { Grid } from '@material-ui/core';
+import { Grid, withStyles } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
-
 import '../css/SelectApp.css'
 
-// const useStyles = makeStyles(theme => ({
-//   root: {
-//     padding: theme.spacing(3, 2),
-//     display: 'flex',
-//     flexWrap: 'wrap',
-//   },
-//   text: {
-//     textAlign: 'center'
-//   },
-//   formControl: {
-//     margin: theme.spacing(1),
-//     minWidth: 180,
-//   },
-//   selectEmpty: {
-//     marginTop: theme.spacing(2),
-//   },
-//   margin: {
-//     margin: theme.spacing(2),
-//   },
-//   extendedIcon: {
-//     marginRight: theme.spacing(1),
-//   },
-// }));
-
-export default function SelectApp() {
-  
-  const inputLabel = React.useRef(null);
-  const [labelWidth, setLabelWidth] = React.useState(0);
-  React.useEffect(() => {
-    setLabelWidth(inputLabel.current.offsetWidth);
-  }, []);
-
-  function handleChange(event) {
-    console.log(event.target.value)
+const styles = theme => ({
+  root: {
+    padding: theme.spacing(3, 2),
+  },
+  extendedIcon: {
+    marginRight: theme.spacing(1),
+  },
+  textControl: {
+    textAlign: 'center'
   }
-  
-  const [values, setValues] = React.useState({
-    age: '',
-    name: 'hai',
-  });
+});
 
-  return (
-    <div>
-      <Paper className="root">
-      <Grid container spacing={3} alignItems="center" justify="center">
-        <Grid item xs={12} >
-            <Typography variant="h5" component="h3" className="text">
-            Select an Application
-            </Typography>
+
+class SelectApp extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+      const { classes } = this.props;
+      
+        return(
+            <div>
+              <Paper className={classes.root}>
+              <Grid container spacing={3} alignItems="center" justify="center">
+                <Grid item xs={12}>
+                <Typography variant="h5" component="h3" className={classes.textControl}>
+                  Select An Application:-
+                </Typography>
+                </Grid>
+                <FormControl variant="filled" className="formControl">
+        <InputLabel htmlFor="filled-age-simple" className="inputControl">Select An App</InputLabel>
+        <Select
+          input={<FilledInput name="age" id="filled-age-simple" />}
+        >
+         <MenuItem value={10}>Iris Classification</MenuItem>
+          <MenuItem value={20}>House Price Estimation</MenuItem>
+          <MenuItem value={30}>Profanity Check App</MenuItem>
+        </Select>
+      </FormControl>
+                {/* <FormControl variant="outlined" className="formControl">
+        <InputLabel htmlFor="outlined-age-simple">
+          Select an App
+        </InputLabel>
+        <Select input={<OutlinedInput name="age" id="outlined-age-simple" />}>
+          <MenuItem value={10}>Iris Classification</MenuItem>
+          <MenuItem value={20}>House Price Estimation</MenuItem>
+          <MenuItem value={30}>Profanity Check App</MenuItem>
+        </Select>
+      </FormControl> */}
+               
+                <Fab
+          variant="extended"
+          size="small"
+          color="primary"
+          aria-label="add"
+          className={classes.margin}
+        >
+          Run
+        </Fab>
         </Grid>
-
-        <FormControl variant="outlined" className="formControl">
-            <InputLabel ref={inputLabel} htmlFor="outlined-age-simple">
-            Select an App
-            </InputLabel>
-            <Select
-            value={values.age}
-            onChange={handleChange}
-            input={<OutlinedInput labelWidth={labelWidth} name="age" id="outlined-age-simple" />}
-            >
-            
-            <MenuItem value={'Iris Classification'}>Iris Classification</MenuItem>
-            <MenuItem value={'Twenty'}>Twenty</MenuItem>
-            <MenuItem value={'Thirty'}>Thirty</MenuItem>
-            </Select>
-        </FormControl>
-
-            <Fab
-            variant="extended"
-            size="medium"
-            color="primary"
-            aria-label="add"
-            className="margin"
-            >
-            Run
-            </Fab>
-        </Grid>
-      </Paper>
-    </div>
-  );
+              </Paper>
+            </div>
+        )
+    }
 }
+
+
+export default withStyles(styles) (SelectApp);
