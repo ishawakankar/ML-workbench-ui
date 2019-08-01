@@ -22,8 +22,9 @@
 }
 
 #images {
+  /* background-color: rgb(230, 227, 227) !important; */
   background-image: url('https://ak8.picdn.net/shutterstock/videos/1006819768/thumb/11.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
   height: 30vh;
 }

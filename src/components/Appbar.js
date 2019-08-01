@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import '../css/style.css'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,7 +25,7 @@ export default function NavBar() {
 
   return (
     <div className={classes.root} >
-      <AppBar position="static">
+      <AppBar position="static" className="app">
         <Toolbar>
           <Typography style={{fontSize: '1.7rem'}} className={classes.title}>
             Daggit

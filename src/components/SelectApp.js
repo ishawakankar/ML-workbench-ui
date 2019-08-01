@@ -69,6 +69,24 @@ class SelectApp extends React.Component {
       else {
         console.log(this.state.applicaton)
         console.log(this.state.profanityInput)
+
+        var request = {
+              "request":{
+                  "text": `${this.state.profanityInput}`
+              }
+        }
+        // fetch('https://127.0.0.1.3579/ml/profanity_check', {
+        fetch('https://72263323-8d0b-47ec-bb99-a3c189fd38ef.mock.pstmn.io/ml/profanity_check', {
+          method: 'POST', 
+          mode: 'cors', 
+          cache: 'no-cache',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(request)
+        }).then(response => response.json()).then((response) => {
+          console.log(response.result.profanity)
+        })
       }
     }
 
@@ -113,7 +131,7 @@ class SelectApp extends React.Component {
                     <Grid item xs={12} >
                     <TextField
                       id="standard-dense"
-                      label="Dense"
+                      label="Check for Profanity"
                       margin="dense"
                       onChange={this.handleProfanityInput}
                       style={{backgroundColor: '#ffffff', opacity: 0.7}}
