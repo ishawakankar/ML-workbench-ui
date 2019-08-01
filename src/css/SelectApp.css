@@ -14,14 +14,16 @@
     margin-top: 2%;
 }
 .formControl {
-    width: 10vw !important
+    width: 15vw !important;
+    background-color: aliceblue;
 }
-/* .selectEmpty {
-    marginTop: theme.spacing(2),
-  }
-.margin {
-    margin: theme.spacing(2),
-  }
-.extendedIcon {
-    marginRight: theme.spacing(1),
-  } */
+.fabButton {
+  margin-left: 15px !important;
+}
+
+#images {
+  background-image: url('https://ak8.picdn.net/shutterstock/videos/1006819768/thumb/11.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 30vh;
+}
