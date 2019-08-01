@@ -33,4 +33,5 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 30vw !important
 }
