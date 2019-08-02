@@ -49,7 +49,8 @@ class SelectApp extends React.Component {
           profanityInputShow: false,
           sentence: '',
           sentence1: '',
-          highlight: 'hell',
+          highlight: '',
+          profanityScore: ''
         }
     }
 
@@ -88,100 +89,115 @@ class SelectApp extends React.Component {
                   "text": `${this.state.profanityInput}`
               }
         }
+        var text = this.state.profanityInput;
         // fetch('https://127.0.0.1.3579/ml/profanity_check', {
         fetch('https://72263323-8d0b-47ec-bb99-a3c189fd38ef.mock.pstmn.io/ml/profanity_check', {
-          method: 'POST', 
-          mode: 'cors', 
-          cache: 'no-cache',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(request)
-        }).then(response => response.json()).then((response) => {
-          this.setState({
-            sentence: response.result.profanity[0].sentOfoccurance.split(this.state.highlight)[0],
-            sentence1: response.result.profanity[0].sentOfoccurance.split(this.state.highlight)[1],
+          
+            method: 'POST', 
+            mode: 'cors', 
+            cache: 'no-cache',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(request)
+          }).then(response => response.json()).then((response) => {
+            console.log('response',response.result.profanity[0].detectedWord[0])
+            console.log(text.split(response.result.profanity[0].detectedWord[0])[0])
+            // console.log(response.result.profanity[0].sentOfoccurance)
+            this.setState({
+              highlight: response.result.profanity[0].detectedWord[0],
+              sentence: text.split(response.result.profanity[0].detectedWord[0])[0],
+              sentence1: text.split(response.result.profanity[0].detectedWord[0])[1],
+              profanityScore: response.result.profanity[0].score
+            })
           })
-        })
+        }
       }
-    }
-
-    render() {
-      const { classes } = this.props;
-      
-        return(
-            <div>
-              <Paper className={classes.root} id="images">
-                <Grid container spacing={3} alignItems="center" justify="center">
-                  <Grid item xs={12}>
-                    <Typography variant="h5" component="h3" className={classes.textControl} style={{color: '#ffffff'}}>
-                      Select An Application
-                    </Typography>
-                  </Grid>
-
-                  <FormControl variant="filled" className="formControl">
-                    <InputLabel htmlFor="filled-age-simple" className="inputControl">Select An App</InputLabel>
-                    <Select
-                      input={<FilledInput name="age" id="filled-age-simple" />}
-                      onChange={this.handleChange}
-                      value={this.state.applicaton}
-                    >
-                      <MenuItem value={'Iris Classification'}>Iris Classification</MenuItem>
-                      <MenuItem value={'House Price Estimation'}>House Price Estimation</MenuItem>
-                      <MenuItem value={'Profanity Check App'}>Profanity Check App</MenuItem>
-                    </Select>
-                  </FormControl>
-               
-                    <Fab
-                      variant="extended"
-                      size="medium"
-                      color="primary"
-                      aria-label="add"
-                      className="fabButton"
-                      onClick={this.handleClick}
-                    >
-                      Run
-                    </Fab>
-
-                  {(this.state.profanityInputShow)?
-                    <Grid item xs={12} className="profanityInputGrid" >
-                     <Paper className={classes.ProfanityRoot}>
-                      <InputBase
-                        className={classes.input}
-                        placeholder="Enter a sentence"
-                        inputProps={{ 'aria-label': 'Enter a Sentence' }}
+  
+      render() {
+        const { classes } = this.props;
+        
+          return(
+              <div>
+                <Paper className={classes.root} id="images">
+                  <Grid container spacing={3} alignItems="center" justify="center">
+                    <Grid item xs={12}>
+                      <Typography variant="h5" component="h3" className={classes.textControl} style={{color: '#ffffff'}}>
+                        Select An Application
+                      </Typography>
+                    </Grid>
+  
+                    <FormControl variant="filled" className="formControl">
+                      <InputLabel htmlFor="filled-age-simple" className="inputControl">Select An App</InputLabel>
+                      <Select
+                        input={<FilledInput name="age" id="filled-age-simple" />}
+                        onChange={this.handleChange}
+                        value={this.state.applicaton}
+                      >
+                        <MenuItem value={'Iris Classification'}>Iris Classification</MenuItem>
+                        <MenuItem value={'House Price Estimation'}>House Price Estimation</MenuItem>
+                        <MenuItem value={'Profanity Check App'}>Profanity Check App</MenuItem>
+                      </Select>
+                    </FormControl>
+                 
+                     
+  
+                    {(this.state.profanityInputShow)?
+                      <Grid item xs={12} className="profanityInputGrid" >
+                       <Paper className={classes.ProfanityRoot}>
+                        <InputBase
+                          className={classes.input}
+                          placeholder="Enter a sentence"
+                          inputProps={{ 'aria-label': 'Enter a Sentence' }}
+                          onChange={this.handleProfanityInput}
+                        />                      
+                      </Paper>
+                      <Fab
+                        variant="extended"
+                        size="medium"
+                        color="primary"
+                        aria-label="add"
+                        className="fabButton"
+                        onClick={this.handleClick}
+                      >
+                        Run
+                      </Fab>
+                      {/* <TextField
+                        id="standard-dense"
+                        label="Check for Profanity"
+                        margin="dense"
                         onChange={this.handleProfanityInput}
-                      />
-                    </Paper>
-                    {/* <TextField
-                      id="standard-dense"
-                      label="Check for Profanity"
-                      margin="dense"
-                      onChange={this.handleProfanityInput}
-                      style={{backgroundColor: '#ffffff', opacity: 0.7}}
-                      fullWidth
-                    /> */}
-                  </Grid>:''}
-                </Grid>
-              </Paper>
-
-              {(this.state.sentence=='')?'':
-              <Card style={{width: '50vw', margin: 20}}>
-                <CardContent>
-                  <Typography color="textSecondary" gutterBottom>
-                    {this.state.sentence}
-                    <span style={{color: '#FF0000'}}>
-                      {this.state.highlight}
-                    </span>
-                    {this.state.sentence1}
+                        style={{backgroundColor: '#ffffff', opacity: 0.7}}
+                        fullWidth
+                      /> */}
+                    </Grid>:''}
+                  </Grid>
+                </Paper>
+  
+                {(this.state.sentence=='')?'':
+                <Grid container spacing={3} alignItems="center" justify="center" >
+                  <Grid item xs={6}>
+                  <Typography variant="h6" component="h5">
+                    Profanity Score: {this.state.profanityScore}
                   </Typography>
-                </CardContent>
-              </Card>
-              }
-            </div>
-        )
-    }
-}
-
-
-export default withStyles(styles) (SelectApp);
+                  </Grid>
+                <Card style={{width: '50vw', margin: 20}} className={classes.profanityCard}>
+                  <CardContent>
+                    <Typography color="textSecondary" gutterBottom>
+                      {this.state.sentence}
+                      <span style={{color: '#FF0000'}}>
+                        {this.state.highlight}
+                      </span>
+                      {this.state.sentence1}
+                    </Typography>
+                  </CardContent>
+                </Card>
+                </Grid>
+                }
+              </div>
+          )
+      }
+  }
+  
+  
+  export default withStyles(styles) (SelectApp);
