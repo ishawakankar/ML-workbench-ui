@@ -88,7 +88,7 @@ class SelectApp extends React.Component {
                   "text": `${this.state.profanityInput}`
               }
         }
-        // fetch('https://127.0.0.1.3579/ml/profanity_check', {
+        // fetch('https://127.0.0.1:3579/ml/profanity_check', {
         fetch('https://72263323-8d0b-47ec-bb99-a3c189fd38ef.mock.pstmn.io/ml/profanity_check', {
           method: 'POST', 
           mode: 'cors', 
