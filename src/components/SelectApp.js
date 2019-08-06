@@ -90,8 +90,6 @@ class SelectApp extends React.Component {
               }
         }
         var text = this.state.profanityInput;
-        // fetch('https://127.0.0.1.3579/ml/profanity_check', {
-        // fetch('https://72263323-8d0b-47ec-bb99-a3c189fd38ef.mock.pstmn.io/ml/profanity_check', {
           fetch('https://125bad6e-3a27-4359-ba06-8dfbac37f01e.mock.pstmn.io/ml/profanity', {
             method: 'POST', 
             mode: 'cors', 
@@ -151,6 +149,7 @@ class SelectApp extends React.Component {
                           className={classes.input}
                           placeholder="Enter a sentence"
                           inputProps={{ 'aria-label': 'Enter a Sentence' }}
+                          multiline
                           onChange={this.handleProfanityInput}
                         />                      
                       </Paper>
