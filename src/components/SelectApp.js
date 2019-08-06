@@ -81,8 +81,8 @@ class SelectApp extends React.Component {
         console.log('Required value Profanity Input')
       }
       else {
-        console.log(this.state.applicaton)
-        console.log(this.state.profanityInput)
+        // console.log(this.state.applicaton)
+        // console.log(this.state.profanityInput)
 
         var request = {
               "request":{
@@ -91,8 +91,8 @@ class SelectApp extends React.Component {
         }
         var text = this.state.profanityInput;
         // fetch('https://127.0.0.1.3579/ml/profanity_check', {
-        fetch('https://72263323-8d0b-47ec-bb99-a3c189fd38ef.mock.pstmn.io/ml/profanity_check', {
-          
+        // fetch('https://72263323-8d0b-47ec-bb99-a3c189fd38ef.mock.pstmn.io/ml/profanity_check', {
+          fetch('https://125bad6e-3a27-4359-ba06-8dfbac37f01e.mock.pstmn.io/ml/profanity', {
             method: 'POST', 
             mode: 'cors', 
             cache: 'no-cache',
@@ -101,9 +101,11 @@ class SelectApp extends React.Component {
             },
             body: JSON.stringify(request)
           }).then(response => response.json()).then((response) => {
-            console.log('response',response.result.profanity[0].detectedWord[0])
-            console.log(text.split(response.result.profanity[0].detectedWord[0])[0])
-            // console.log(response.result.profanity[0].sentOfoccurance)
+
+            response.result.profanity[0].detectedWord.map((word) => {
+              console.log('detected word ',response.result.profanity[0].detectedWord)
+            })
+
             this.setState({
               highlight: response.result.profanity[0].detectedWord[0],
               sentence: text.split(response.result.profanity[0].detectedWord[0])[0],
